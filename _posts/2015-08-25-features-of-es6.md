@@ -1,9 +1,11 @@
 ---
 layout: post
-title:  "Возможности ES6"
-date:   2015-02-19 21:46:04
+title: Возможности ES6
+date: {}
 categories: javascript
+published: true
 ---
+
 {% newthought 'ES6 -' %} новый(хотя в целом уже не) стандарт Javascript. Наконец нашел время пройтись по фичам, и выбрать то, что буду юзать уже сейчас.<!--more-->  Выбирал по ссылкам с подборкой этих фич: [один](http://es6-features.org/#RawStringAccess) и [два](https://github.com/lukehoban/es6features).
 
 <!-- странная статья, немного не про то вообще -  Также полезно для прочтения: <http://habrahabr.ru/post/216997/> , -->
@@ -14,6 +16,7 @@ categories: javascript
 Достаточно простые вещи, которые только делают поведение js более ожидаемым.
 
 Например, в этой функции x будет виден только в блоке if(true), и не будет за его пределами
+{% highlight javascript %}
 function f() {
   {
     if (true) {
@@ -29,12 +32,14 @@ let x = "inner";
     }
   }
 }
+{% endhighlight %}
 
-также по поводу let из https://leanpub.com/understandinges6/read/ :
+также по поводу let из https://leanpub.com/understandinges6/read/:
 
-Using let in loops
+**Using let in loops**
 The behavior of let inside of loops is slightly different than with other blocks. Instead of creating a variable that is used with each iteration of the loop, each iteration actually gets its own variable to use. This is to solve an old problem with JavaScript loops. Consider the following:
 
+{% highlight javascript %}
  var funcs = [];
 
  for (var i=0; i < 10; i++) {
@@ -44,6 +49,8 @@ The behavior of let inside of loops is slightly different than with other blocks
  funcs.forEach(function(func) {
      func();     // outputs the number "10" ten times
  });
+{% endhighlight %}
+
 This code will output the number 10 ten times in a row. That’s because the variable i is shared across each iteration of the loop, meaning the closures created inside the loop all hold a reference to the same variable. The variable i has a value of 10 once the loop completes, and so that’s the value each function outputs.
 
 To fix this problem, developers use immediately-invoked function expressions (IIFEs) inside of loops to force a new copy of the variable to be created:

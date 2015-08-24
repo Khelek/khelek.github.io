@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Возможности ES6
-date: {}
+title:  "Возможности ES6"
 categories: javascript
 published: true
 ---
@@ -18,87 +17,97 @@ published: true
 Например, в этой функции x будет виден только в блоке if(true), и не будет за его пределами
 {% highlight javascript %}
 function f() {
-  {
     if (true) {
-let x;
-{
-// okay, block scoped name
-const x = "sneaky";
-// error, const
-x = "foo";
-}
-// error, already declared in block
-let x = "inner";
+        let x;
+        {
+            // okay, block scoped name
+            const x = "sneaky";
+            // error, const
+            x = "foo";
+        }
+        // error, already declared in block
+        let x = "inner";
     }
-  }
 }
 {% endhighlight %}
 
-также по поводу let из https://leanpub.com/understandinges6/read/:
+также по поводу let из <https://leanpub.com/understandinges6/read/>:
 
-**Using let in loops**
+<blockquote class="smallquote" markdown="1">
+**Using let in loops.**
 The behavior of let inside of loops is slightly different than with other blocks. Instead of creating a variable that is used with each iteration of the loop, each iteration actually gets its own variable to use. This is to solve an old problem with JavaScript loops. Consider the following:
 
 {% highlight javascript %}
- var funcs = [];
-
- for (var i=0; i < 10; i++) {
-     funcs.push(function() { console.log(i); });
- }
-
- funcs.forEach(function(func) {
-     func();     // outputs the number "10" ten times
- });
+var funcs = [];
+for (var i=0; i < 10; i++) {
+    funcs.push(function() { console.log(i); });
+}
+funcs.forEach(function(func) {
+    func();     // outputs the number "10" ten times
+});
 {% endhighlight %}
 
-This code will output the number 10 ten times in a row. That’s because the variable i is shared across each iteration of the loop, meaning the closures created inside the loop all hold a reference to the same variable. The variable i has a value of 10 once the loop completes, and so that’s the value each function outputs.
+ This code will output the number 10 ten times in a row. That’s because the variable i is shared across each iteration of the loop, meaning the closures created inside the loop all hold a reference to the same variable. The variable i has a value of 10 once the loop completes, and so that’s the value each function outputs.
 
-To fix this problem, developers use immediately-invoked function expressions (IIFEs) inside of loops to force a new copy of the variable to be created:
+ To fix this problem, developers use immediately-invoked function expressions (IIFEs) inside of loops to force a new copy of the variable to be created:
 
- var funcs = [];
-
- for (var i=0; i < 10; i++) {
-     funcs.push((function(value) {
-         return function() {
-             console.log(value);
-         }
-     }(i)));
- }
-
- funcs.forEach(function(func) {
-     func();     // outputs 0, then 1, then 2, up to 9
- });
+{% highlight javascript %}
+var funcs = [];
+for (var i=0; i < 10; i++) {
+    funcs.push((function(value) {
+        return function() {
+            console.log(value);
+        }
+    }(i)));
+}
+funcs.forEach(function(func) {
+    func();     // outputs 0, then 1, then 2, up to 9
+});
+{% endhighlight %}
 This version of the example uses an IIFE inside of the loop. The i variable is passed to the IIFE, which creates its own copy and stores it as value. This is the value used of the function for that iteration, so calling each function returns the expected value.
 
 A let declaration does this for you without the IIFE. Each iteration through the loop results in a new variable being created and initialized to the value of the variable with the same name from the previous iteration. That means you can simplify the process by using this code:
 
- var funcs = [];
-
- for (let i=0; i < 10; i++) {
-     funcs.push(function() { console.log(i); });
- }
-
- funcs.forEach(function(func) {
-     func();     // outputs 0, then 1, then 2, up to 9
- })
+{% highlight javascript %}
+var funcs = [];
+for (let i=0; i < 10; i++) {
+    funcs.push(function() { console.log(i); });
+}
+funcs.forEach(function(func) {
+    func();     // outputs 0, then 1, then 2, up to 9
+})
+{% endhighlight %}
 This code works exactly like the code that used var and an IIFE but is, arguably, cleaner.
 
+ </blockquote>
 
-List comprehensions - это как генераторы в эрланге, удобные и мощные штуки(к слову, это часть стандарта es7 уже)
+<ol start="2">
+<li markdown='1'>  **List comprehensions** - это как генераторы в эрланге, удобные и мощные штуки(к слову, это часть стандарта es7 уже)
+</li></ol>
 
+{% highlight javascript %}
 let numbers = [ 1, 4, 9 ];
 [for (num of numbers) Math.sqrt(num)];
 // => [ 1, 2, 3 ]
+{% endhighlight %}
 
-Arrows - просто приятный сокращенный синтаксис для анонимных функций, напоминает такой же синтаксис в  C#
+<ol start="3">
+<li markdown='1'> **Arrows** - просто приятный сокращенный синтаксис для анонимных функций, напоминает такой же синтаксис в  C#
+</li></ol>
 было:
+{% highlight javascript %}
 var f = function(x) { return x * 2 }
 var f2 = function(x,y) { return x * y }
 стало:
 let f = x => x * 2 или (x => x * 2)
 let f2 = ((x, y) => x * y)
+{% endhighlight %}
 
-Template Strings - строки с интерполяцией + многострочные строки. удивительно, как долго это добиралось до js.
+<ol start="4">
+<li markdown='1'> **Template Strings** - строки с интерполяцией + многострочные строки. удивительно, как долго это добиралось до js.
+</li></ol>
+
+{% highlight javascript %}
 // Multiline strings
 `In JavaScript this is
  not legal.`
@@ -106,9 +115,11 @@ Template Strings - строки с интерполяцией + многостр
 // String interpolation
 var name = "Bob", time = "today";
 `Hello ${name}, how are you ${time}?`
+{% endhighlight %}
 
-Однако здесь есть одновременно один косяк. Называется в стандарте Raw String Access. Не совсем я втыкаю, что это и как работает, пример:
+Однако здесь есть одновременно одна штуковина. Называется в стандарте Raw String Access. Не совсем я втыкаю, что это и как работает, пример:
 
+{% highlight javascript %}
 function quux (strings, ...values) {
   strings[0] === "foo\n"
   strings[1] === "bar"
@@ -117,10 +128,15 @@ function quux (strings, ...values) {
   values[0] === 42
 }
 quux `foo\n${ 42 }bar`
+{% endhighlight %}
 
 Однако если делать quux(`foo\n${ 42 }bar`) получалось совсем иное. WTF? вобщем надо быть осторожным с доступом к строке по id после интерполяции, мало ли.
-Destructuring - в эрланге и прочем мире паттерн матчинг.
-﻿
+
+<ol start="5">
+<li markdown='1'> **Destructuring** - в эрланге и прочем мире паттерн матчинг.
+</li></ol>
+
+{% highlight javascript %}
 // list matching
 var [a, , b] = [1,2,3];
 
@@ -144,8 +160,13 @@ a === undefined;
 // Fail-soft destructuring with defaults
 var [a = 1] = [];
 a === 1;
+{% endhighlight %}
 
-Default + Rest + Spread - для параметров в функциях - параметры по умолчанию, "лишние" параметры, и типо разворачивания списка в его элементы.
+<ol start="6">
+<li markdown='1'> **Default + Rest + Spread** - для параметров в функциях - параметры по умолчанию, "лишние" параметры, и типо разворачивания списка в его элементы.
+</li></ol>
+
+{% highlight javascript %}
 function f(x, y=12) { // default
   // y is 12 if not passed (or passed as undefined)
   return x + y;
@@ -164,13 +185,16 @@ function f(x, y, z) {
 }
 // Pass each elem of array as argument
 f(...[1,2,3]) == 6  // spread
+{% endhighlight %}
 
 Причем spread можно использовать не только при вызове функций, можно например в массивах или строках -
+{% highlight javascript %}
 var params = [ "hello", true, 7 ]
 var other = [ 1, 2, ...params ] // [ 1, 2, "hello", true, 7 ]
 
 var str = "foo"
 var chars = [ … str ] // [ "f", "o", "o" ]
+{% endhighlight %}
 
 Iterators + For..Of - итераторы типо CLR IEnumerable или Java Iterable. for .. of - используется для итерации навроде for ... in. Итераторы могут быть ленивыми. (доки https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Iteration_protocols). Пример:
 

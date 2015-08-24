@@ -1,0 +1,33 @@
+baseurl:
+title: Пометки в процессе.
+subtitle: Content-centric blogging
+author: Dmitry Davydov
+simple_search: http://google.com/search
+description: > # this means to ignore newlines until "baseurl:"
+  Блог о программировании, развитии, и всяком, что попадётся на пути.
+name: tufte
+markdown: Kramdown
+kramdown:
+  input: GFM
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+highlighter: rouge
+permalink: /articles/:short_year/:title
+timezone: America/New_York
+excerpt_separator: <!--more-->  # you can specify your own separator, of course.
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']
+post:
+  template: _post.txt
+  extension: md
+page:
+  template: _page.txt
+  extension: md
+editor: gvim
+twitter_username: xaykot
+github_username:  khelek
+git:
+  branch: master
+# transfer:
+#   command: rsync
+#   settings: -av
+#   source: _site/
+#   destination: ~/Git/clayh53.github.com/

@@ -4,6 +4,9 @@ require 'rake'
 require 'yaml'
 require 'fileutils'
 require 'rbconfig'
+require 'jekyll'
+require 'tmpdir'
+require 'date'
 
 # == Configuration =============================================================
 
@@ -78,7 +81,33 @@ def open_command
   end
 end
 
+
 # == Tasks =====================================================================
+
+desc "Generate blog files"
+task :generate do
+  Jekyll::Site.new(Jekyll.configuration({
+    "source"      => ".",
+    "destination" => "_site"
+  })).process
+end
+
+
+desc "Generate and publish blog to gh-pages"
+task :publish => [:generate] do
+  Dir.mktmpdir do |tmp|
+    system "mv _site/* #{tmp}"
+    system "git checkout -B master"
+    system "rm -rf *"
+    system "mv #{tmp}/* ."
+    message = "Site updated at #{Time.now.utc}"
+    system "git add ."
+    system "git commit -am #{message.shellescape}"
+    system "git push origin master --force"
+    system "git checkout source"
+    system "echo yolo"
+  end
+end
 
 # rake post["Title"]
 desc "Create a post in _posts"
@@ -108,7 +137,7 @@ end
 
 # rake publish
 desc "Move a post from _drafts to _posts"
-task :publish do
+task :from_draft do
   extension = CONFIG["post"]["extension"]
   files = Dir["#{DRAFTS}/*.#{extension}"]
   files.each_with_index do |file, index|

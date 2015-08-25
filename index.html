@@ -3,6 +3,7 @@ layout: default
 title: Tufte
 ---
   <h1 class="content-listing-header sans">Articles</h1>
+  <span class="sans">Disclaimer: Статьи не претендуют на понятность, завершенность и абсолютную правдивость.</span>
   <ul class="content">
     {% for post in site.posts %}
       <li class="listing">
@@ -10,7 +11,7 @@ title: Tufte
       	<a href="{{ post.url }}"><h4 class="contrast">{{ post.title }}</h4></a>
       	<span class="smaller">{{ post.date | date: "%B %-d, %Y" }}</span>  <br/>
 		<div>{{ post.excerpt }}</div>
-		
+
       </li>
     {% endfor %}
   </ul>

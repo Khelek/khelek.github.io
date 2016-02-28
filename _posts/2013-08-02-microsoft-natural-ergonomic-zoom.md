@@ -5,7 +5,7 @@ categories: other
 published: true
 ---
 
-После приобретения шикарной клавиатуры [Microsoft Natural Ergonomic Keyboard 4000](http://www.microsoft.com/hardware/en-us/p/natural-ergonomic-keyboard-4000/B2M-00012#details) я столкнулся с тем, что под Ubuntu на ней не работал скроллер, расположенный в самом её центре.
+После приобретения клавиатуры [Microsoft Natural Ergonomic Keyboard 4000](http://www.microsoft.com/hardware/en-us/p/natural-ergonomic-keyboard-4000/B2M-00012#details) я столкнулся с тем, что под Ubuntu на ней не работал скроллер, расположенный в самом её центре.
  <!--more-->
 {% fullwidth "https://www.microsoft.com/hardware/_base_v1/products/natural-ergonomic-keyboard-4000/mk_nek4000v2_large.jpg" %}
 Немного прошерстив интернет, я выяснил, что некоторые клавиши этой клавы генерируют события с кодами выше некоего значения (фиг знает какого, пусть будет 255).

@@ -81,6 +81,10 @@ def open_command
   end
 end
 
+def repo_clean?
+  system "git diff-index --quiet HEAD --"
+end
+
 
 # == Tasks =====================================================================
 
@@ -92,9 +96,10 @@ task :generate do
   })).process
 end
 
-
 desc "Generate and publish blog to gh-pages"
 task :publish => [:generate] do
+  raise "Need commit or stash changes before publish." unless repo_clean?
+
   Dir.mktmpdir do |tmp|
     system "mv _site/* #{tmp}"
     system "git checkout -B master"

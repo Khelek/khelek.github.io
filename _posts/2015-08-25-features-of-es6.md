@@ -194,7 +194,7 @@ var str = "foo"
 var chars = [ … str ] // [ "f", "o", "o" ]
    ```
 
-7. **Iterators + For..Of** - итераторы типо CLR IEnumerable или Java Iterable. *for .. of* - используется для итерации навроде *for ... in*.
+7. <span id='iterators'></span>**Iterators + For..Of** - итераторы типо CLR IEnumerable или Java Iterable. *for .. of* - используется для итерации навроде *for ... in*.
     Итераторы могут быть ленивыми ([доки](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Iteration_protocols)). Пример:
 
    ```javascript

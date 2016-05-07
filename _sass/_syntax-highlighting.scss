@@ -7,7 +7,9 @@ $spacing-unit:     30px;
 }
 
 .highlight {
-    background: #fffff8;
+    background: #FFFFFE;
+    padding: 15px;
+    border: 1px solid;
     @extend %vertical-rhythm;
 
     .c     { color: #998; font-style: italic } // Comment

@@ -1,3 +1,5 @@
+https://habrahabr.ru/post/28155/
+
 http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim
 http://www.catswhocode.com/blog/130-essential-vim-commands
 http://rayninfo.co.uk/vimtips.html

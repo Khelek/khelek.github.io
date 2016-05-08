@@ -75,11 +75,12 @@ html{
 
 body {
   width: 87.5%;
+  height: 95%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 8.4%;
   font-family: $body-font;
-  padding-bottom: 400px;
+  // padding-bottom: 400px;
   background-color: $bg-color;
   color: $text-color;
   max-width: 1400px;
@@ -103,6 +104,9 @@ body > footer  ul  li{
 }
 body > footer ul li a{
   font-size: 1.8rem;
+  &:hover {
+      border: transparent;
+  }
 }
 //change font color for credit links in footer
 .credits{
@@ -126,7 +130,7 @@ p, li{
 // Necessary to specify that any list within an article is the same width as
 // the paragraphs
 
-p, article  ul li, pre code, pre code p, code{
+p, article  ul li, pre code, pre code p, .highlight{
   width: 65%;
 }
 
@@ -141,8 +145,13 @@ p, article  ul li, pre code, pre code p, code{
     }
 }
 
-a, .marginnote a, .sidenote a{
+a {
   color: $contrast-color;
+  transition: 0.1s border-bottom ease;
+  border-bottom: 1px solid transparent;
+  &:hover {
+      border-bottom: 1px solid;
+  }
 }
 ul.content{
   list-style: none;

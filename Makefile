@@ -1,4 +1,4 @@
-serve:
+run:
 	rake watch
 
 deploy:

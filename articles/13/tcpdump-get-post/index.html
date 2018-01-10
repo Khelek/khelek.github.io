@@ -5,9 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Davydov blog @ haukot</title>
-  <meta name="description" content="Блог о программировании, развитии, и всяком, что попадётся на пути.
-">
+  <title>Команда tcpdump, которая показывает http запросы в читаемом виде</title>
+  <meta name="description" content="С непривычки разобраться в разнообразных аргументах tcpdump тяжело, так что сохранил команду, которая показывает в читабельном виде содержимое HTTP:$ sudo tc...">
 
 
   <link rel="stylesheet" href="/css/tufte.css">
@@ -21,7 +20,7 @@
   <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/articles/13/tcpdump-get-post">
   <link rel="alternate" type="application/rss+xml" title="Пометки в процессе." href="/feed.xml" />
 
   <script>
@@ -64,34 +63,18 @@
 </header>
 
     <article>
-        <ul class="content">
-    
-        
-        
-            <li id="y2016" class="year">2016</li>
-            
-        
-        <li><a href="/articles/16/rees46-conspect">Конспект доклада Rees46 про триггерные рассылки</a></li>
-    
-        
-        
-        <li><a href="/articles/16/good_erlang_libs">Интересные библиотеки Erlang</a></li>
-    
-        
-        
-            <li id="y2013" class="year">2013</li>
-            
-        
-        <li><a href="/articles/13/tcpdump-get-post">Команда tcpdump, которая показывает http запросы в читаемом виде</a></li>
-    
-        
-        
-        <li><a href="/articles/13/microsoft-natural-ergonomic-zoom">Включение на клавиатуре Microsoft Natural Ergonomic Keyboard 4000 ползунка масштабирования, на Ubuntu 12.10</a></li>
-    
-  </ul>
+      <h1>Команда tcpdump, которая показывает http запросы в читаемом виде</h1>
+<p>October 12, 2013</p>
+
+
+<p>С непривычки разобраться в разнообразных аргументах tcpdump тяжело, так что сохранил команду, которая показывает в читабельном виде содержимое HTTP:<br />
+<code class="highlighter-rouge">
+$ sudo tcpdump -i lo tcp port 8081 -vv -A
+</code></p>
+
 
     </article>
-    <span class="print-footer">Davydov blog @ haukot - Dmitry Davydov</span>
+    <span class="print-footer">Команда tcpdump, которая показывает http запросы в читаемом виде - October 12, 2013 - Dmitry Davydov</span>
     <footer>
   <ul class="footer-links group">
     <li>

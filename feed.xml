@@ -1,30 +1,187 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>Пометки в процессе.</title>
+    <description>Блог о программировании, развитии, и всяком, что попадётся на пути.
+</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 10 Jan 2018 18:34:53 -0500</pubDate>
+    <lastBuildDate>Wed, 10 Jan 2018 18:34:53 -0500</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>Конспект доклада Rees46 про триггерные рассылки</title>
+        <description>&lt;p&gt;Доклад прошёл 22 апреля на конференции Стачка, ссылка на тезисы &lt;a href=&quot;http://nastachku.ru/lectures#lecture_489&quot;&gt;здесь&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;На докладе Кечинов Михаил рассказывал про их опыт работы с клиентами ecommercе через триггерные рассылки.&lt;br /&gt;
+Что-то уже успел забыть, эти моменты комментировал (*&lt;em&gt;вот так&lt;/em&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;Про триггеры отсылки писем&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Брошенная корзина(положил товар в корзину и ушёл). Письмо - напомнить, что в его корзине что-то лежит. Конверсия - &lt;strong&gt;6%&lt;/strong&gt;, &lt;em&gt;самая большая среди всех триггеров&lt;/em&gt;. Нужно отсылать первый раз через 40 минут, второй раз - через день.&lt;/li&gt;
+  &lt;li&gt;Поздняя брошенная корзина(прошло больше суток).&lt;/li&gt;
+  &lt;li&gt;Брошенный просмотр(покупатель посмотрел товар и ушёл). Письмо - напомнить, что он просматривал. Конверсия - &lt;strong&gt;1%&lt;/strong&gt;. Нужно отсылать через 2 часа после брошенного просмотра.&lt;/li&gt;
+  &lt;li&gt;Письмо после заказа. После исполнения заказа прислать письмо “Оставьте отзыв на товар”. Но надо быть аккуратным, чтобы не отослать, когда доставка ещё не прошла&lt;/li&gt;
+  &lt;li&gt;Пополните заказы. Для продуктов, покупаемых регулярно(мыло там).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Отсылать за раз надо один, самый приоритетный триггер, пауза между триггерами - 1 сутки.&lt;br /&gt;
+Для регулярных покупок пауза 12 суток.(*&lt;em&gt;не помню, почему именно 12&lt;/em&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;Про то, что рекомендовать на каждом триггере&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Брошенная корзина: брошенные товары, альтернатива, персональная скидка на брошенный товар.&lt;/li&gt;
+  &lt;li&gt;Поздняя брошенная корзина: брошенные товары, альтернатива, персональная скидка на брошенный товар.&lt;/li&gt;
+  &lt;li&gt;Брошенный просмотр: брошенные товары, альтернатива, персональная скидка на брошенный товар.&lt;/li&gt;
+  &lt;li&gt;Письмо после заказа: оставьте отзыв, посмотрите ещё эти товары.&lt;/li&gt;
+  &lt;li&gt;Пополните заказы: рекомендации регулярно покупаемых товаров, которые скоро закончатся.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;Про рекомендации&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Разным клиентам нужно разное. Кому-то надо дешевле, кому-то больше фич, и сразу в магазине они могут не найти, что искали. Можно делать рассылку в стиле - “Ты смотрел вот этот товар, а есть ещё вот этот, который чуть хуже, но зато дешевле”, или “Ты смотрел вот это, но есть вот этот, который чуть дороже, но в нём фич больше”.&lt;/li&gt;
+  &lt;li&gt;Рассылки по регулярным товарам. Можно отправлять в стиле “Ты покупаешь обычно это, но есть вот это, которое чуть дороже, но зато лучшего качества”.&lt;/li&gt;
+  &lt;li&gt;Бывает такая ситуация(особенно в магазинах нумизматики). Человек набирает в корзину много монеток, и долго живет с этой корзиной и не покупает. Можно отправить такое письмо(после пары суток) - “Что-то, что ты хотел, осталось одно, а его сейчас смотрят два человека. Купи, пока есть возможность”.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;Про письма&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;На первом месте в письме должен быть осмысленный текст, чтобы в почтовике в списке писем сразу было видно ваше предложение. Вариант - alt-текст в логотипе, если он у вас на первом месте.&lt;/li&gt;
+  &lt;li&gt;Не надо писать слишком длинные письма - почтовики иногда отрезают лишнее, и ваша кнопка “Купить” глубоко внизу может пропасть.&lt;/li&gt;
+  &lt;li&gt;Делайте понятный call to action. Если это покупка - то большая видная кнопка “Купить”, если подписка - “Подписаться”.&lt;/li&gt;
+  &lt;li&gt;В рассылке рекомендаций отсылайте не больше 9 товаров, самый максимум 12.(*&lt;em&gt;что-то странные цифры&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;Шаблон письма не должен слишко много весить(в мегабайтах). Слишком тяжелые письма то ли режутся почтовиками, то ли чаще попадают в спам, то ли в целом на них меньше конверсия.&lt;/li&gt;
+  &lt;li&gt;Ложная открываемость. Открываемость трекается по ложному пикселю(невидимая картинка, которую пользователь скачивает при открытии письма). Gmail может его выкачивать в свой кеш, давая неверные результаты статистики.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;Про спам&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Отсылайте HTML + TXT версии письма одновременно(да, в стандарте есть возможность отослать письмо в TXT формате). Это уменьшает шанс спама.&lt;/li&gt;
+  &lt;li&gt;Проверяйте свои письма на спам-рейтинг, например на сайте mail-tester.com (заодно там показывают, как улучшить рейтинг). Он тоже показывает не всё, из-за чего письмо может попасть в спам, но часть ошибок вычищает.&lt;/li&gt;
+  &lt;li&gt;Иногда почтовики банят не само письмо, а шаблон(например, если кто-то отсылал спам с opensource шаблоном. Но и вам шаблон тоже может улететь). В этом случае можно сперва попробовать поменять формулировки в письме, или найти новый шаблон\переверстать старый.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 18 May 2016 00:00:00 -0400</pubDate>
+        <link>/articles/16/rees46-conspect</link>
+        <guid isPermaLink="true">/articles/16/rees46-conspect</guid>
+        
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Интересные библиотеки Erlang</title>
+        <description>&lt;p&gt;Пополняемый список того, что может пригодится&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;monitoring and production:&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/ferd/vmstats&quot;&gt;https://github.com/ferd/vmstats&lt;/a&gt; - stats for graphite(also &lt;a href=&quot;https://github.com/lpgauth/vmstats/&quot;&gt;https://github.com/lpgauth/vmstats/&lt;/a&gt;)&lt;br /&gt;
+&lt;a href=&quot;https://github.com/ferd/recon&quot;&gt;https://github.com/ferd/recon&lt;/a&gt; - Collection of functions and scripts to debug Erlang in production.&lt;br /&gt;
+&lt;a href=&quot;https://github.com/boldpoker/edeliver&quot;&gt;https://github.com/boldpoker/edeliver&lt;/a&gt; - deployment for erlang and elixir(with code reload)&lt;br /&gt;
+&lt;a href=&quot;https://github.com/mazenharake/entop&quot;&gt;https://github.com/mazenharake/entop&lt;/a&gt; - A top-like tool for monitoring an Erlang remote node&lt;br /&gt;
+&lt;a href=&quot;https://github.com/Feuerlabs/exometer&quot;&gt;https://github.com/Feuerlabs/exometer&lt;/a&gt; - Basic measurement objects and probe behavior(some like folsom)&lt;br /&gt;
+&lt;a href=&quot;https://github.com/massemanet/eper&quot;&gt;https://github.com/massemanet/eper&lt;/a&gt; - perfomance and debug tools&lt;br /&gt;
+&lt;a href=&quot;https://github.com/boundary/folsom/issues/101&quot;&gt;https://github.com/boundary/folsom/issues/101&lt;/a&gt; - erlang metrics and events&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;articles:&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&quot;http://erlang.org/pipermail/erlang-questions/2015-May/084418.html&quot;&gt;http://erlang.org/pipermail/erlang-questions/2015-May/084418.html&lt;/a&gt; - erlang currying&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;utils:&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/klarna/tulib&quot;&gt;https://github.com/klarna/tulib&lt;/a&gt; - standart library&lt;br /&gt;
+&lt;a href=&quot;https://github.com/unbalancedparentheses/erlang-katana&quot;&gt;https://github.com/unbalancedparentheses/erlang-katana&lt;/a&gt; - standart library&lt;br /&gt;
+&lt;a href=&quot;https://github.com/ericbmerritt/erlware_commons&quot;&gt;https://github.com/ericbmerritt/erlware_commons&lt;/a&gt; - standart library&lt;br /&gt;
+&lt;a href=&quot;https://github.com/EchoTeam/utils&quot;&gt;https://github.com/EchoTeam/utils&lt;/a&gt; - utils&lt;br /&gt;
+&lt;a href=&quot;https://github.com/arcusfelis/lists2&quot;&gt;https://github.com/arcusfelis/lists2&lt;/a&gt; - many lists functions&lt;br /&gt;
+&lt;a href=&quot;https://github.com/rabbitmq/erlando&quot;&gt;https://github.com/rabbitmq/erlando&lt;/a&gt; - monads, currying&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;uncategorized:&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/fogfish/cache&quot;&gt;https://github.com/fogfish/cache&lt;/a&gt; - in-memory cache&lt;br /&gt;
+&lt;a href=&quot;https://github.com/eproxus/grapherl&quot;&gt;https://github.com/eproxus/grapherl&lt;/a&gt; - graphs of applications and modules dependency&lt;br /&gt;
+&lt;a href=&quot;https://github.com/hyperthunk/annotations&quot;&gt;https://github.com/hyperthunk/annotations&lt;/a&gt; - annotations for erlang&lt;br /&gt;
+&lt;a href=&quot;https://github.com/seancribbs/eunit_formatters&quot;&gt;https://github.com/seancribbs/eunit_formatters&lt;/a&gt; - good formatters for test&lt;br /&gt;
+&lt;a href=&quot;https://github.com/erlang/pmod_transform&quot;&gt;https://github.com/erlang/pmod_transform&lt;/a&gt; - parse transform for parametrized modules&lt;br /&gt;
+&lt;a href=&quot;https://github.com/shizzard/unicorn&quot;&gt;https://github.com/shizzard/unicorn&lt;/a&gt; - configuration server&lt;br /&gt;
+&lt;a href=&quot;https://github.com/ferd/useragent&quot;&gt;https://github.com/ferd/useragent&lt;/a&gt; - Identify browsers and OSes from user agent strings, in Erlang&lt;br /&gt;
+&lt;a href=&quot;https://github.com/RJ/relflow&quot;&gt;https://github.com/RJ/relflow&lt;/a&gt; - Version-incrementing, appup-generating, relx-coaxing, workflow-assistant for Erlang projects using rebar3.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 29 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/articles/16/good_erlang_libs</link>
+        <guid isPermaLink="true">/articles/16/good_erlang_libs</guid>
+        
+        
+        <category>programming,</category>
+        
+        <category>erlang</category>
+        
+      </item>
+    
+      <item>
+        <title>Команда tcpdump, которая показывает http запросы в читаемом виде</title>
+        <description>&lt;p&gt;С непривычки разобраться в разнообразных аргументах tcpdump тяжело, так что сохранил команду, которая показывает в читабельном виде содержимое HTTP:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ sudo tcpdump -i lo tcp port 8081 -vv -A
+&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 12 Oct 2013 00:00:00 -0400</pubDate>
+        <link>/articles/13/tcpdump-get-post</link>
+        <guid isPermaLink="true">/articles/13/tcpdump-get-post</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Включение на клавиатуре Microsoft Natural Ergonomic Keyboard 4000 ползунка масштабирования, на Ubuntu 12.10</title>
+        <description>&lt;p&gt;После приобретения клавиатуры &lt;a href=&quot;http://www.microsoft.com/hardware/en-us/p/natural-ergonomic-keyboard-4000/B2M-00012#details&quot;&gt;Microsoft Natural Ergonomic Keyboard 4000&lt;/a&gt; я столкнулся с тем, что под Ubuntu на ней не работал скроллер, расположенный в самом её центре.&lt;br /&gt;
+ &lt;!--more--&gt;&lt;/p&gt;
+&lt;div&gt;&lt;img class=&quot;fullwidth&quot; src=&quot;https://www.microsoft.com/hardware/_base_v1/products/natural-ergonomic-keyboard-4000/mk_nek4000v2_large.jpg&quot; /&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;marginnote&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Немного прошерстив интернет, я выяснил, что некоторые клавиши этой клавы генерируют события с кодами выше некоего значения (фиг знает какого, пусть будет 255).&lt;/p&gt;
+
+&lt;p&gt;А потом я натолкнулся на этот &lt;a href=&quot;http://rebelliard.com/blog/enabling-scrolling-using-the-microsoft-natural-ergonomic-keyboard-4000s-zoom-slider-on-ubuntu-1210/&quot;&gt;пост&lt;/a&gt;, где чувак заменял нестандартные события этой клавы на свои. Так вот:&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;Простой способ&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Откройте файл /lib/udev/rules.d/95-keymap.rules:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+ $ sudo nano /lib/udev/rules.d/95-keymap.rules
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Находим строку, начинающуюся с ENV{ID_VENDOR}==”Microsoft”. У меня это выглядит так:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+ ENV{ID_VENDOR}==&quot;Microsoft&quot;, ENV{ID_MODEL_ID}==&quot;00db&quot;, RUN+=&quot;keymap $name 0xc022d zoomin 0xc022e zoomout&quot;
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Замените zoomin значение с pageup и zoomout значение с pagedown (или на чтото своё, мне для емакса было удобнее переназначить на leftctrl и rightctrl ):&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+ ENV{ID_VENDOR}==&quot;Microsoft&quot;, ENV{ID_MODEL_ID}==&quot;00db&quot;, RUN+=&quot;keymap $name 0xc022d pageup 0xc022e pagedown&quot;
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Изменения будут применены, если переподключить клавиатуру или перезагрузить комп.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;P.S. В статье чувака также есть длинный путь для тех, у кого не получилось простым.&lt;br /&gt;
+P.P.S. Работает также в Ubuntu 12.04 и 13.10.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 02 Aug 2013 00:00:00 -0400</pubDate>
+        <link>/articles/13/microsoft-natural-ergonomic-zoom</link>
+        <guid isPermaLink="true">/articles/13/microsoft-natural-ergonomic-zoom</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
   </channel>
 </rss>

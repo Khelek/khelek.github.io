@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Интересные библиотеки Erlang</title>
+  <meta name="description" content="Пополняемый список того, что может пригодится">
+
+
+  <link rel="stylesheet" href="/css/tufte.css">
+
+
+  <!-- Google Fonts loaded here -->
+  <link href='//fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
+
+  <!-- Load up MathJax script if needed ... specify in /_data/options.yml file-->
+  
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+  <link rel="canonical" href="/articles/16/good_erlang_libs">
+  <link rel="alternate" type="application/rss+xml" title="Пометки в процессе." href="/feed.xml" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47361114-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+  <body>
+    <!--- Header and nav template site-wide -->
+<header>
+    <nav class="group">
+		<a href="/">Posts</a>
+		<a href="/about">About</a>
+	</nav>
+    <script>
+     function ready() {
+      var links = document.querySelectorAll('header nav a');
+      var pathname = window.location.pathname;
+
+      function normalize(path) {
+         return path.toUpperCase().split(/\//g).filter(function(x) { return x !== "" }).join('');
+      }
+
+      for (var i = 0; i < links.length; i++) {
+          var link = links[i];
+          if (normalize(pathname) == normalize(link.pathname)) {
+              link.classList.add('active');
+          }
+      }
+     }
+
+      document.addEventListener("DOMContentLoaded", ready);
+    </script>
+</header>
+
+    <article>
+      <h1>Интересные библиотеки Erlang</h1>
+<p>February 29, 2016</p>
+
+
+<p>Пополняемый список того, что может пригодится<br />
+<!--more--></p>
+
+<p><strong>monitoring and production:</strong><br />
+<a href="https://github.com/ferd/vmstats">https://github.com/ferd/vmstats</a> - stats for graphite(also <a href="https://github.com/lpgauth/vmstats/">https://github.com/lpgauth/vmstats/</a>)<br />
+<a href="https://github.com/ferd/recon">https://github.com/ferd/recon</a> - Collection of functions and scripts to debug Erlang in production.<br />
+<a href="https://github.com/boldpoker/edeliver">https://github.com/boldpoker/edeliver</a> - deployment for erlang and elixir(with code reload)<br />
+<a href="https://github.com/mazenharake/entop">https://github.com/mazenharake/entop</a> - A top-like tool for monitoring an Erlang remote node<br />
+<a href="https://github.com/Feuerlabs/exometer">https://github.com/Feuerlabs/exometer</a> - Basic measurement objects and probe behavior(some like folsom)<br />
+<a href="https://github.com/massemanet/eper">https://github.com/massemanet/eper</a> - perfomance and debug tools<br />
+<a href="https://github.com/boundary/folsom/issues/101">https://github.com/boundary/folsom/issues/101</a> - erlang metrics and events</p>
+
+<p><strong>articles:</strong><br />
+<a href="http://erlang.org/pipermail/erlang-questions/2015-May/084418.html">http://erlang.org/pipermail/erlang-questions/2015-May/084418.html</a> - erlang currying</p>
+
+<p><strong>utils:</strong><br />
+<a href="https://github.com/klarna/tulib">https://github.com/klarna/tulib</a> - standart library<br />
+<a href="https://github.com/unbalancedparentheses/erlang-katana">https://github.com/unbalancedparentheses/erlang-katana</a> - standart library<br />
+<a href="https://github.com/ericbmerritt/erlware_commons">https://github.com/ericbmerritt/erlware_commons</a> - standart library<br />
+<a href="https://github.com/EchoTeam/utils">https://github.com/EchoTeam/utils</a> - utils<br />
+<a href="https://github.com/arcusfelis/lists2">https://github.com/arcusfelis/lists2</a> - many lists functions<br />
+<a href="https://github.com/rabbitmq/erlando">https://github.com/rabbitmq/erlando</a> - monads, currying</p>
+
+<p><strong>uncategorized:</strong><br />
+<a href="https://github.com/fogfish/cache">https://github.com/fogfish/cache</a> - in-memory cache<br />
+<a href="https://github.com/eproxus/grapherl">https://github.com/eproxus/grapherl</a> - graphs of applications and modules dependency<br />
+<a href="https://github.com/hyperthunk/annotations">https://github.com/hyperthunk/annotations</a> - annotations for erlang<br />
+<a href="https://github.com/seancribbs/eunit_formatters">https://github.com/seancribbs/eunit_formatters</a> - good formatters for test<br />
+<a href="https://github.com/erlang/pmod_transform">https://github.com/erlang/pmod_transform</a> - parse transform for parametrized modules<br />
+<a href="https://github.com/shizzard/unicorn">https://github.com/shizzard/unicorn</a> - configuration server<br />
+<a href="https://github.com/ferd/useragent">https://github.com/ferd/useragent</a> - Identify browsers and OSes from user agent strings, in Erlang<br />
+<a href="https://github.com/RJ/relflow">https://github.com/RJ/relflow</a> - Version-incrementing, appup-generating, relx-coaxing, workflow-assistant for Erlang projects using rebar3.</p>
+
+
+    </article>
+    <span class="print-footer">Интересные библиотеки Erlang - February 29, 2016 - Dmitry Davydov</span>
+    <footer>
+  <ul class="footer-links group">
+    <li>
+      <script>
+		document.write('<a class="email "href=" ma' + 'ilto:haud' + 'vd+blog@gma' + 'il.com "><span class="icon-mail"></span></a>');
+	  </script>
+    </li>
+    
+      <li>
+        <a href="//www.twitter.com/xaykot"><span class="icon-twitter"></span></a>
+      </li>
+    
+      <li>
+        <a href="//github.com/khelek"><span class="icon-github"></span></a>
+      </li>
+    
+      <li>
+        <a href="/feed.xml"><span class="icon-feed"></span></a>
+      </li>
+    
+  </ul>
+<div class="credits">
+<span>&copy; 2018 &nbsp;&nbsp;DMITRY DAVYDOV</span></br>
+</div>
+</footer>
+
+  </body>
+</html>

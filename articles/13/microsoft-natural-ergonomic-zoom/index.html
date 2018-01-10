@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Включение на клавиатуре Microsoft Natural Ergonomic Keyboard 4000 ползунка масштабирования, на Ubuntu 12.10</title>
+  <meta name="description" content="После приобретения клавиатуры Microsoft Natural Ergonomic Keyboard 4000 я столкнулся с тем, что под Ubuntu на ней не работал скроллер, расположенный в самом ...">
+
+
+  <link rel="stylesheet" href="/css/tufte.css">
+
+
+  <!-- Google Fonts loaded here -->
+  <link href='//fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
+
+  <!-- Load up MathJax script if needed ... specify in /_data/options.yml file-->
+  
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+  <link rel="canonical" href="/articles/13/microsoft-natural-ergonomic-zoom">
+  <link rel="alternate" type="application/rss+xml" title="Пометки в процессе." href="/feed.xml" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47361114-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+  <body>
+    <!--- Header and nav template site-wide -->
+<header>
+    <nav class="group">
+		<a href="/">Posts</a>
+		<a href="/about">About</a>
+	</nav>
+    <script>
+     function ready() {
+      var links = document.querySelectorAll('header nav a');
+      var pathname = window.location.pathname;
+
+      function normalize(path) {
+         return path.toUpperCase().split(/\//g).filter(function(x) { return x !== "" }).join('');
+      }
+
+      for (var i = 0; i < links.length; i++) {
+          var link = links[i];
+          if (normalize(pathname) == normalize(link.pathname)) {
+              link.classList.add('active');
+          }
+      }
+     }
+
+      document.addEventListener("DOMContentLoaded", ready);
+    </script>
+</header>
+
+    <article>
+      <h1>Включение на клавиатуре Microsoft Natural Ergonomic Keyboard 4000 ползунка масштабирования, на Ubuntu 12.10</h1>
+<p>August 2, 2013</p>
+
+
+<p>После приобретения клавиатуры <a href="http://www.microsoft.com/hardware/en-us/p/natural-ergonomic-keyboard-4000/B2M-00012#details">Microsoft Natural Ergonomic Keyboard 4000</a> я столкнулся с тем, что под Ubuntu на ней не работал скроллер, расположенный в самом её центре.<br />
+ <!--more--></p>
+<div><img class="fullwidth" src="https://www.microsoft.com/hardware/_base_v1/products/natural-ergonomic-keyboard-4000/mk_nek4000v2_large.jpg" /></div>
+<p><span class="marginnote"></span></p>
+<p>Немного прошерстив интернет, я выяснил, что некоторые клавиши этой клавы генерируют события с кодами выше некоего значения (фиг знает какого, пусть будет 255).</p>
+
+<p>А потом я натолкнулся на этот <a href="http://rebelliard.com/blog/enabling-scrolling-using-the-microsoft-natural-ergonomic-keyboard-4000s-zoom-slider-on-ubuntu-1210/">пост</a>, где чувак заменял нестандартные события этой клавы на свои. Так вот:</p>
+
+<h3 id="section">Простой способ</h3>
+
+<ol>
+  <li>
+    <p>Откройте файл /lib/udev/rules.d/95-keymap.rules:</p>
+
+    <p><code class="highlighter-rouge">
+ $ sudo nano /lib/udev/rules.d/95-keymap.rules
+</code></p>
+  </li>
+  <li>
+    <p>Находим строку, начинающуюся с ENV{ID_VENDOR}==”Microsoft”. У меня это выглядит так:</p>
+
+    <p><code class="highlighter-rouge">
+ ENV{ID_VENDOR}=="Microsoft", ENV{ID_MODEL_ID}=="00db", RUN+="keymap $name 0xc022d zoomin 0xc022e zoomout"
+</code></p>
+  </li>
+  <li>
+    <p>Замените zoomin значение с pageup и zoomout значение с pagedown (или на чтото своё, мне для емакса было удобнее переназначить на leftctrl и rightctrl ):</p>
+
+    <p><code class="highlighter-rouge">
+ ENV{ID_VENDOR}=="Microsoft", ENV{ID_MODEL_ID}=="00db", RUN+="keymap $name 0xc022d pageup 0xc022e pagedown"
+</code></p>
+  </li>
+  <li>
+    <p>Изменения будут применены, если переподключить клавиатуру или перезагрузить комп.</p>
+  </li>
+</ol>
+
+<p>P.S. В статье чувака также есть длинный путь для тех, у кого не получилось простым.<br />
+P.P.S. Работает также в Ubuntu 12.04 и 13.10.</p>
+
+
+    </article>
+    <span class="print-footer">Включение на клавиатуре Microsoft Natural Ergonomic Keyboard 4000 ползунка масштабирования, на Ubuntu 12.10 - August 2, 2013 - Dmitry Davydov</span>
+    <footer>
+  <ul class="footer-links group">
+    <li>
+      <script>
+		document.write('<a class="email "href=" ma' + 'ilto:haud' + 'vd+blog@gma' + 'il.com "><span class="icon-mail"></span></a>');
+	  </script>
+    </li>
+    
+      <li>
+        <a href="//www.twitter.com/xaykot"><span class="icon-twitter"></span></a>
+      </li>
+    
+      <li>
+        <a href="//github.com/khelek"><span class="icon-github"></span></a>
+      </li>
+    
+      <li>
+        <a href="/feed.xml"><span class="icon-feed"></span></a>
+      </li>
+    
+  </ul>
+<div class="credits">
+<span>&copy; 2018 &nbsp;&nbsp;DMITRY DAVYDOV</span></br>
+</div>
+</footer>
+
+  </body>
+</html>

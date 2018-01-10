@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Davydov blog @ haukot</title>
+  <title>page</title>
   <meta name="description" content="Блог о программировании, развитии, и всяком, что попадётся на пути.
 ">
 
@@ -21,7 +21,7 @@
   <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/page/">
   <link rel="alternate" type="application/rss+xml" title="Пометки в процессе." href="/feed.xml" />
 
   <script>
@@ -64,34 +64,41 @@
 </header>
 
     <article>
-        <ul class="content">
-    
-        
-        
-            <li id="y2016" class="year">2016</li>
-            
-        
-        <li><a href="/articles/16/rees46-conspect">Конспект доклада Rees46 про триггерные рассылки</a></li>
-    
-        
-        
-        <li><a href="/articles/16/good_erlang_libs">Интересные библиотеки Erlang</a></li>
-    
-        
-        
-            <li id="y2013" class="year">2013</li>
-            
-        
-        <li><a href="/articles/13/tcpdump-get-post">Команда tcpdump, которая показывает http запросы в читаемом виде</a></li>
-    
-        
-        
-        <li><a href="/articles/13/microsoft-natural-ergonomic-zoom">Включение на клавиатуре Microsoft Natural Ergonomic Keyboard 4000 ползунка масштабирования, на Ubuntu 12.10</a></li>
-    
-  </ul>
+      <h1>page</h1>
+<p></p>
+
+
+<p><span class="newthought">In this first iteration</span>  of the <em>Tufte-Jekyll</em> theme, a post and a page have exactly the same layout. That means that all the typographic and structural details are identical between the two.</p>
+
+<h2 id="pages-and-posts">Pages and Posts</h2>
+
+<p>Jekyll provides for both pages and posts in its default configuration. I have left this as-is. </p>
+
+<h3 id="posts">Posts</h3>
+
+<p>Conceptually, posts are for recurring pieces of similar content such as might be found in a typical blog entry. Post content all sits in a folder named <code class="highlighter-rouge">_posts</code> and files are created in this folder<sup class="sidenote-number">1</sup><span class="sidenote"><sup class="sidenote-number">1</sup> Yes, a page has essentially the same old shit as a post</span> that are names with a date pre-pended to the title of the post. For instance <code class="highlighter-rouge">2105-02-20-this-is-a-post.md</code> is a perfectly valid post filename.</p>
+
+<p>Posts will always have a section above the content itself consisting of YAML front matter, which is meta-data information about the post. Minimally, a post title must always be present for it to be processed properly.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+Title: Some Title
+---
+## Content
+
+Markdown formatted content *here*.
+</code></pre>
+</div>
+
+<h3 id="pages">Pages</h3>
+
+<p>Pages are any HTML documents <em>or</em> Markdown documents with YAML front matter that are then converted to content. Page material is more suited to static, non-recurring types of content. Like this</p>
+
+<p>I am not going to re-write the Jekyll documentation. Read it and you will figure out how the site is structured.</p>
+
+
 
     </article>
-    <span class="print-footer">Davydov blog @ haukot - Dmitry Davydov</span>
+    <span class="print-footer">page - Dmitry Davydov</span>
     <footer>
   <ul class="footer-links group">
     <li>
